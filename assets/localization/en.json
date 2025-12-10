@@ -153,5 +153,8 @@
   "valueA": "Value a in (x + a = b)",
   "valueB": "Value b in (x + a = b)",
   
-  "developer": "Developer"
+  "developer": "Developer",
+  
+  "usefulTip": "Useful Tip",
+  "copiedToClipboard": "Copied to clipboard"
 }

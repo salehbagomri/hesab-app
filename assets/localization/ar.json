@@ -153,5 +153,8 @@
   "valueA": "قيمة a في (x + a = b)",
   "valueB": "قيمة b في (x + a = b)",
   
-  "developer": "المطور"
+  "developer": "المطور",
+  
+  "usefulTip": "معلومة مفيدة",
+  "copiedToClipboard": "تم النسخ إلى الحافظة"
 }

@@ -419,7 +419,7 @@ class _ResultScreenState extends ConsumerState<ResultScreen>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'معلومة مفيدة',
+                  localizations.usefulTip,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     fontWeight: FontWeight.w600,
                     color: AppColors.info,
@@ -550,7 +550,7 @@ ${explanation.steps.asMap().entries.map((e) => '${e.key + 1}. ${e.value.title}\n
           children: [
             const Icon(Icons.copy, color: Colors.white, size: 20),
             const SizedBox(width: 12),
-            const Text('تم النسخ إلى الحافظة'),
+            Text(localizations.copiedToClipboard),
           ],
         ),
         backgroundColor: AppColors.primary,

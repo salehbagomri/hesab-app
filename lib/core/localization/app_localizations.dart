@@ -179,6 +179,9 @@ class AppLocalizations {
   String get valueB => translate('valueB');
 
   String get developer => translate('developer');
+
+  String get usefulTip => translate('usefulTip');
+  String get copiedToClipboard => translate('copiedToClipboard');
 }
 
 /// Delegate لتحميل الترجمات
