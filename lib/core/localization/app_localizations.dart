@@ -91,10 +91,13 @@ class AppLocalizations {
   String get calculate => translate('calculate');
   String get result => translate('result');
   String get explanation => translate('explanation');
+  String get step => translate('step');
+  String get steps => translate('steps');
 
   String get newOperation => translate('newOperation');
   String get saveToHistory => translate('saveToHistory');
   String get savedToHistory => translate('savedToHistory');
+  String get savedSuccessfully => translate('savedSuccessfully');
 
   String get language => translate('language');
   String get selectLanguage => translate('selectLanguage');
