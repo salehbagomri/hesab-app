@@ -156,5 +156,51 @@
   "developer": "المطور",
   
   "usefulTip": "معلومة مفيدة",
-  "copiedToClipboard": "تم النسخ إلى الحافظة"
+  "copiedToClipboard": "تم النسخ إلى الحافظة",
+  
+  "expProblem": "📝 المسألة",
+  "expArrangeNumbers": "📊 نرتب الأرقام",
+  "expAddOnes": "🔢 نجمع الآحاد",
+  "expAddTens": "🔢 نجمع العشرات",
+  "expSubtractOnes": "🔢 نطرح الآحاد",
+  "expSubtractTens": "🔢 نطرح العشرات",
+  "expFinalResult": "✅ النتيجة النهائية",
+  "expCalculation": "🔢 الحساب",
+  "expMultiplicationTable": "🔢 من جدول الضرب",
+  "expMultiply": "🔢 الضرب",
+  "expDivision": "🔢 القسمة",
+  "expNote": "📌 ملاحظة",
+  "expError": "❌ خطأ",
+  "expConvertPercentage": "🔢 نحول النسبة المئوية",
+  "expMultiplyByNumber": "✖️ نضرب في العدد",
+  "expSquareRoot": "🔢 الجذر التربيعي",
+  "expVerify": "✔️ التحقق",
+  "expSquaring": "🔢 التربيع",
+  "expCubing": "🔢 التكعيب",
+  "expUnifyDenominators": "🔢 توحيد المقامات",
+  "expConvertFractions": "📊 تحويل الكسور",
+  "expAddNumerators": "➕ جمع البسوط",
+  "expSimplify": "✂️ التبسيط",
+  "expEquation": "📝 المعادلة",
+  "expSoon": "قريباً",
+  
+  "expWeWantToCalculate": "نريد حساب:",
+  "expWriteNumbersAboveEachOther": "نكتب الأرقام فوق بعضها مع محاذاة الآحاد والعشرات",
+  "expCannotDivideByZero": "لا يمكن القسمة على صفر!",
+  "expDivisionByZeroUndefined": "القسمة على صفر غير معرفة في الرياضيات",
+  "expPercentageMeansOutOf100": "النسبة المئوية تعني من 100",
+  "expCannotCalculateSquareRoot": "لا يمكن حساب الجذر التربيعي لعدد سالب!",
+  "expSquareRootNegativeComplex": "الجذر التربيعي للأعداد السالبة يكون عدداً تخيلياً",
+  "expTheResult": "الناتج:",
+  "expBecause": "لأن",
+  "expMultipliedBy": "×",
+  "expEquals": "=",
+  "expThisFeatureComingSoon": "هذه العملية ستكون متاحة قريباً",
+  
+  "addNumbersDirectly": "نجمع الرقمين مباشرة",
+  "subtractSecondFromFirst": "نطرح الرقم الثاني من الأول",
+  "multiplyTheNumbers": "نضرب الرقمين",
+  "divideFirstBySecond": "نقسم الرقم الأول على الثاني",
+  "exactDivision": "قسمة تامة",
+  "remainder": "الباقي"
 }

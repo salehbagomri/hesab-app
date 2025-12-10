@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/localization/app_localizations.dart';
 import '../models/explanation.dart';
 
 /// عنصر عرض خطوة من الشرح التفصيلي - تصميم احترافي محسّن
@@ -12,6 +13,13 @@ class ExplanationStepWidget extends StatelessWidget {
     required this.step,
     required this.stepNumber,
   });
+
+  /// ترجمة النص إذا كان مفتاح ترجمة، وإلا عرضه كما هو
+  String _translateOrKeep(BuildContext context, String text) {
+    final localizations = AppLocalizations.of(context);
+    // محاولة ترجمة النص، إذا لم يكن مفتاح صالح سيعيد النص الأصلي
+    return localizations.translate(text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +117,7 @@ class ExplanationStepWidget extends StatelessWidget {
                 // عنوان الخطوة
                 Expanded(
                   child: Text(
-                    step.title,
+                    _translateOrKeep(context, step.title),
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: step.isHighlighted
                           ? AppColors.primary
@@ -146,7 +154,7 @@ class ExplanationStepWidget extends StatelessWidget {
               children: [
                 // الوصف
                 Text(
-                  step.description,
+                  _translateOrKeep(context, step.description),
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: AppColors.textPrimary,
                     height: 1.7,

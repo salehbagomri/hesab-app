@@ -182,6 +182,58 @@ class AppLocalizations {
 
   String get usefulTip => translate('usefulTip');
   String get copiedToClipboard => translate('copiedToClipboard');
+
+  // Explanation keys
+  String get expProblem => translate('expProblem');
+  String get expArrangeNumbers => translate('expArrangeNumbers');
+  String get expAddOnes => translate('expAddOnes');
+  String get expAddTens => translate('expAddTens');
+  String get expSubtractOnes => translate('expSubtractOnes');
+  String get expSubtractTens => translate('expSubtractTens');
+  String get expFinalResult => translate('expFinalResult');
+  String get expCalculation => translate('expCalculation');
+  String get expMultiplicationTable => translate('expMultiplicationTable');
+  String get expMultiply => translate('expMultiply');
+  String get expDivision => translate('expDivision');
+  String get expNote => translate('expNote');
+  String get expError => translate('expError');
+  String get expConvertPercentage => translate('expConvertPercentage');
+  String get expMultiplyByNumber => translate('expMultiplyByNumber');
+  String get expSquareRoot => translate('expSquareRoot');
+  String get expVerify => translate('expVerify');
+  String get expSquaring => translate('expSquaring');
+  String get expCubing => translate('expCubing');
+  String get expUnifyDenominators => translate('expUnifyDenominators');
+  String get expConvertFractions => translate('expConvertFractions');
+  String get expAddNumerators => translate('expAddNumerators');
+  String get expSimplify => translate('expSimplify');
+  String get expEquation => translate('expEquation');
+  String get expSoon => translate('expSoon');
+
+  String get expWeWantToCalculate => translate('expWeWantToCalculate');
+  String get expWriteNumbersAboveEachOther =>
+      translate('expWriteNumbersAboveEachOther');
+  String get expCannotDivideByZero => translate('expCannotDivideByZero');
+  String get expDivisionByZeroUndefined =>
+      translate('expDivisionByZeroUndefined');
+  String get expPercentageMeansOutOf100 =>
+      translate('expPercentageMeansOutOf100');
+  String get expCannotCalculateSquareRoot =>
+      translate('expCannotCalculateSquareRoot');
+  String get expSquareRootNegativeComplex =>
+      translate('expSquareRootNegativeComplex');
+  String get expTheResult => translate('expTheResult');
+  String get expBecause => translate('expBecause');
+  String get expMultipliedBy => translate('expMultipliedBy');
+  String get expEquals => translate('expEquals');
+  String get expThisFeatureComingSoon => translate('expThisFeatureComingSoon');
+
+  String get addNumbersDirectly => translate('addNumbersDirectly');
+  String get subtractSecondFromFirst => translate('subtractSecondFromFirst');
+  String get multiplyTheNumbers => translate('multiplyTheNumbers');
+  String get divideFirstBySecond => translate('divideFirstBySecond');
+  String get exactDivision => translate('exactDivision');
+  String get remainder => translate('remainder');
 }
 
 /// Delegate لتحميل الترجمات

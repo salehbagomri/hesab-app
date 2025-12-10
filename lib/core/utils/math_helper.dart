@@ -56,11 +56,11 @@ class MathHelper {
         return _calculateProbability(inputs[0].toInt(), inputs[1].toInt());
       default:
         return Explanation(
-          result: 'غير مدعوم حالياً',
+          result: 'expThisFeatureComingSoon',
           steps: [
             ExplanationStep(
-              title: 'قريباً',
-              description: 'هذه العملية ستكون متاحة قريباً',
+              title: 'expSoon',
+              description: 'expThisFeatureComingSoon',
             ),
           ],
         );
@@ -82,26 +82,26 @@ class MathHelper {
         result: result.toStringAsFixed(0),
         steps: [
           ExplanationStep(
-            title: '📝 المسألة',
-            description: 'نريد حساب: $aInt + $bInt',
+            title: 'expProblem',
+            description: 'expWeWantToCalculate $aInt + $bInt',
           ),
           ExplanationStep(
-            title: '📊 نرتب الأرقام',
-            description: 'نكتب الأرقام فوق بعضها مع محاذاة الآحاد والعشرات',
+            title: 'expArrangeNumbers',
+            description: 'expWriteNumbersAboveEachOther',
             visual: _formatAdditionVisual(aInt, bInt),
           ),
           if (aInt >= 10 || bInt >= 10)
             ExplanationStep(
-              title: '🔢 نجمع الآحاد',
+              title: 'expAddOnes',
               description: _getOnesAddition(aInt, bInt),
             ),
           if (aInt >= 10 || bInt >= 10)
             ExplanationStep(
-              title: '🔢 نجمع العشرات',
+              title: 'expAddTens',
               description: _getTensAddition(aInt, bInt),
             ),
           ExplanationStep(
-            title: '✅ النتيجة النهائية',
+            title: 'expFinalResult',
             description: '$aInt + $bInt = ${result.toInt()}',
             isHighlighted: true,
           ),
@@ -113,15 +113,15 @@ class MathHelper {
         result: result.toString(),
         steps: [
           ExplanationStep(
-            title: '📝 المسألة',
-            description: 'نريد حساب: $a + $b',
+            title: 'expProblem',
+            description: 'expWeWantToCalculate $a + $b',
           ),
           ExplanationStep(
-            title: '🔢 الحساب',
-            description: 'نجمع الرقمين مباشرة',
+            title: 'expCalculation',
+            description: 'addNumbersDirectly',
           ),
           ExplanationStep(
-            title: '✅ النتيجة النهائية',
+            title: 'expFinalResult',
             description: '$a + $b = $result',
             isHighlighted: true,
           ),
@@ -142,26 +142,26 @@ class MathHelper {
         result: result.toStringAsFixed(0),
         steps: [
           ExplanationStep(
-            title: '📝 المسألة',
-            description: 'نريد حساب: $aInt - $bInt',
+            title: 'expProblem',
+            description: 'expWeWantToCalculate $aInt - $bInt',
           ),
           ExplanationStep(
-            title: '📊 نرتب الأرقام',
-            description: 'نكتب الأرقام فوق بعضها',
+            title: 'expArrangeNumbers',
+            description: 'expWriteNumbersAboveEachOther',
             visual: _formatSubtractionVisual(aInt, bInt),
           ),
           if (aInt >= 10 || bInt >= 10)
             ExplanationStep(
-              title: '🔢 نطرح الآحاد',
+              title: 'expSubtractOnes',
               description: _getOnesSubtraction(aInt, bInt),
             ),
           if (aInt >= 10 || bInt >= 10)
             ExplanationStep(
-              title: '🔢 نطرح العشرات',
+              title: 'expSubtractTens',
               description: _getTensSubtraction(aInt, bInt),
             ),
           ExplanationStep(
-            title: '✅ النتيجة النهائية',
+            title: 'expFinalResult',
             description: '$aInt - $bInt = ${result.toInt()}',
             isHighlighted: true,
           ),
@@ -172,15 +172,15 @@ class MathHelper {
         result: result.toString(),
         steps: [
           ExplanationStep(
-            title: '📝 المسألة',
-            description: 'نريد حساب: $a - $b',
+            title: 'expProblem',
+            description: 'expWeWantToCalculate $a - $b',
           ),
           ExplanationStep(
-            title: '🔢 الحساب',
-            description: 'نطرح الرقم الثاني من الأول',
+            title: 'expCalculation',
+            description: 'subtractSecondFromFirst',
           ),
           ExplanationStep(
-            title: '✅ النتيجة النهائية',
+            title: 'expFinalResult',
             description: '$a - $b = $result',
             isHighlighted: true,
           ),
@@ -202,16 +202,16 @@ class MathHelper {
         result: result.toStringAsFixed(0),
         steps: [
           ExplanationStep(
-            title: '📝 المسألة',
-            description: 'نريد حساب: $aInt × $bInt',
+            title: 'expProblem',
+            description: 'expWeWantToCalculate $aInt × $bInt',
           ),
           ExplanationStep(
-            title: '🔢 من جدول الضرب',
+            title: 'expMultiplicationTable',
             description: '$aInt × $bInt = ${result.toInt()}',
           ),
           ExplanationStep(
-            title: '✅ النتيجة النهائية',
-            description: 'الناتج = ${result.toInt()}',
+            title: 'expFinalResult',
+            description: 'expTheResult ${result.toInt()}',
             isHighlighted: true,
           ),
         ],
@@ -221,12 +221,15 @@ class MathHelper {
         result: result.toString(),
         steps: [
           ExplanationStep(
-            title: '📝 المسألة',
-            description: 'نريد حساب: $a × $b',
+            title: 'expProblem',
+            description: 'expWeWantToCalculate $a × $b',
           ),
-          ExplanationStep(title: '🔢 الضرب', description: 'نضرب الرقمين'),
           ExplanationStep(
-            title: '✅ النتيجة النهائية',
+            title: 'expMultiply',
+            description: 'multiplyTheNumbers',
+          ),
+          ExplanationStep(
+            title: 'expFinalResult',
             description: '$a × $b = $result',
             isHighlighted: true,
           ),
@@ -239,14 +242,15 @@ class MathHelper {
   static Explanation _calculateDivision(double a, double b) {
     if (b == 0) {
       return Explanation(
-        result: 'خطأ',
+        result: 'expError',
         steps: [
           ExplanationStep(
-            title: '❌ خطأ',
-            description: 'لا يمكن القسمة على صفر',
+            title: 'expError',
+            description: 'expCannotDivideByZero',
             isHighlighted: true,
           ),
         ],
+        additionalInfo: 'expDivisionByZeroUndefined',
       );
     }
 
@@ -257,23 +261,26 @@ class MathHelper {
     return Explanation(
       result: isExact ? result.toStringAsFixed(0) : result.toStringAsFixed(2),
       steps: [
-        ExplanationStep(title: '📝 المسألة', description: 'نريد حساب: $a ÷ $b'),
         ExplanationStep(
-          title: '🔢 القسمة',
+          title: 'expProblem',
+          description: 'expWeWantToCalculate $a ÷ $b',
+        ),
+        ExplanationStep(
+          title: 'expDivision',
           description: isExact
-              ? '$a ÷ $b = ${result.toInt()} (قسمة تامة)'
+              ? '$a ÷ $b = ${result.toInt()} (exactDivision)'
               : '$a ÷ $b = ${result.toStringAsFixed(2)}',
         ),
         if (!isExact)
           ExplanationStep(
-            title: '📌 ملاحظة',
-            description: 'الباقي = ${remainder.toStringAsFixed(2)}',
+            title: 'expNote',
+            description: 'remainder = ${remainder.toStringAsFixed(2)}',
           ),
         ExplanationStep(
-          title: '✅ النتيجة النهائية',
+          title: 'expFinalResult',
           description: isExact
-              ? 'الناتج = ${result.toInt()}'
-              : 'الناتج = ${result.toStringAsFixed(2)}',
+              ? 'expTheResult ${result.toInt()}'
+              : 'expTheResult ${result.toStringAsFixed(2)}',
           isHighlighted: true,
         ),
       ],
