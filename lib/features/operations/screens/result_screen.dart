@@ -494,13 +494,12 @@ class _ResultScreenState extends ConsumerState<ResultScreen>
     final explanationJson = jsonEncode(explanation.toMap());
     final inputText = widget.inputs.join(' , ');
 
+    // حفظ مفتاح الترجمة بدلاً من النص المترجم
     await ref
         .read(historyProvider.notifier)
         .addToHistory(
           level: widget.level,
-          operationType: localizations.translate(
-            widget.operationType.translationKey,
-          ),
+          operationType: widget.operationType.translationKey,
           input: inputText,
           result: explanation.result,
           explanation: explanationJson,

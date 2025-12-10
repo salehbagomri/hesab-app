@@ -12,7 +12,7 @@ class HistoryItem extends HiveObject {
   late String level; // 'elementary', 'middle', 'high'
 
   @HiveField(2)
-  late String operationType; // 'addition', 'subtraction', etc.
+  late String operationType; // Translation key: 'addition', 'subtraction', etc. (NOT translated text)
 
   @HiveField(3)
   late String input; // '12 + 25'

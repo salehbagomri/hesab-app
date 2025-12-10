@@ -71,7 +71,7 @@ class HistoryScreen extends ConsumerWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  item.operationType,
+                                  localizations.translate(item.operationType),
                                   style: Theme.of(context).textTheme.titleSmall
                                       ?.copyWith(
                                         color: AppColors.primary,
