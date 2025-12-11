@@ -300,19 +300,23 @@ class MathHelper {
       steps: [
         ExplanationStep(
           title: '📝 المسألة',
-          description: 'نريد حساب: $percentage% من $number',
+          description:
+              'نريد حساب: ${NumberFormatter.format(percentage)}% من ${NumberFormatter.format(number)}',
         ),
         ExplanationStep(
           title: '🔢 نحول النسبة المئوية',
-          description: '$percentage% = ${percentage / 100}',
+          description:
+              '${NumberFormatter.format(percentage)}% = ${NumberFormatter.formatWithPrecision(percentage / 100, 2)}',
         ),
         ExplanationStep(
           title: '✖️ نضرب في العدد',
-          description: '${percentage / 100} × $number = $result',
+          description:
+              '${NumberFormatter.formatWithPrecision(percentage / 100, 2)} × ${NumberFormatter.format(number)} = ${NumberFormatter.formatWithPrecision(result, 2)}',
         ),
         ExplanationStep(
           title: '✅ النتيجة النهائية',
-          description: '$percentage% من $number = $result',
+          description:
+              '${NumberFormatter.format(percentage)}% من ${NumberFormatter.format(number)} = ${NumberFormatter.formatWithPrecision(result, 2)}',
           isHighlighted: true,
         ),
       ],
@@ -344,19 +348,19 @@ class MathHelper {
       steps: [
         ExplanationStep(
           title: '📝 المسألة',
-          description: 'نريد حساب: √$number',
+          description: 'نريد حساب: √${NumberFormatter.format(number)}',
         ),
         ExplanationStep(
           title: '🔢 الجذر التربيعي',
           description: isPerfectSquare
-              ? '√$number = ${NumberFormatter.format(result)} (عدد صحيح)'
-              : '√$number ≈ ${NumberFormatter.formatWithPrecision(result, 2)}',
+              ? '√${NumberFormatter.format(number)} = ${NumberFormatter.format(result)} (عدد صحيح)'
+              : '√${NumberFormatter.format(number)} ≈ ${NumberFormatter.formatWithPrecision(result, 2)}',
         ),
         if (isPerfectSquare)
           ExplanationStep(
             title: '✔️ التحقق',
             description:
-                '${NumberFormatter.format(result)} × ${NumberFormatter.format(result)} = $number ✓',
+                '${NumberFormatter.format(result)} × ${NumberFormatter.format(result)} = ${NumberFormatter.format(number)} ✓',
           ),
         ExplanationStep(
           title: '✅ النتيجة النهائية',
@@ -378,22 +382,26 @@ class MathHelper {
       steps: [
         ExplanationStep(
           title: '📝 المسألة',
-          description: 'نريد حساب: $base^$exponent',
+          description:
+              'نريد حساب: ${NumberFormatter.format(base)}^${NumberFormatter.format(exponent)}',
         ),
         if (exponent == 2)
           ExplanationStep(
             title: '🔢 التربيع',
-            description: '$base² = $base × $base = $result',
+            description:
+                '${NumberFormatter.format(base)}² = ${NumberFormatter.format(base)} × ${NumberFormatter.format(base)} = ${NumberFormatter.format(result)}',
           )
         else if (exponent == 3)
           ExplanationStep(
             title: '🔢 التكعيب',
-            description: '$base³ = $base × $base × $base = $result',
+            description:
+                '${NumberFormatter.format(base)}³ = ${NumberFormatter.format(base)} × ${NumberFormatter.format(base)} × ${NumberFormatter.format(base)} = ${NumberFormatter.format(result)}',
           )
         else
           ExplanationStep(
             title: '🔢 الحساب',
-            description: '$base^$exponent = $result',
+            description:
+                '${NumberFormatter.format(base)}^${NumberFormatter.format(exponent)} = ${NumberFormatter.format(result)}',
           ),
         ExplanationStep(
           title: '✅ النتيجة النهائية',
