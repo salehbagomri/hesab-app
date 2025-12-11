@@ -489,7 +489,16 @@ class MathHelper {
         ExplanationStep(
           title: '📝 المسألة',
           description:
-              'نريد حساب: ${num1.toInt()}/${den1.toInt()} + ${num2.toInt()}/${den2.toInt()}',
+              'نريد حساب جمع الكسرين',
+          fractionData: {
+            'num1': '${num1.toInt()}',
+            'den1': '${den1.toInt()}',
+            'operator': '+',
+            'num2': '${num2.toInt()}',
+            'den2': '${den2.toInt()}',
+            'resultNum': '$simplifiedNum',
+            'resultDen': '$simplifiedDen',
+          },
         ),
         ExplanationStep(
           title: '🔢 توحيد المقامات',
@@ -498,7 +507,8 @@ class MathHelper {
         ExplanationStep(
           title: '📊 تحويل الكسور',
           description:
-              '${num1.toInt()}/${den1.toInt()} = ${newNum1.toInt()}/$lcm\n${num2.toInt()}/${den2.toInt()} = ${newNum2.toInt()}/$lcm',
+              'نحول الكسرين لنفس المقام ($lcm)',
+          visual: '${num1.toInt()}/${den1.toInt()} = ${newNum1.toInt()}/$lcm\n${num2.toInt()}/${den2.toInt()} = ${newNum2.toInt()}/$lcm',
         ),
         ExplanationStep(
           title: '➕ جمع البسوط',

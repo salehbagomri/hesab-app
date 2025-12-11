@@ -4,12 +4,14 @@ class ExplanationStep {
   final String description;
   final String? visual;
   final bool isHighlighted;
+  final Map<String, String>? fractionData; // بيانات الكسر للعرض العمودي
 
   const ExplanationStep({
     required this.title,
     required this.description,
     this.visual,
     this.isHighlighted = false,
+    this.fractionData,
   });
 
   Map<String, dynamic> toMap() {
@@ -18,6 +20,7 @@ class ExplanationStep {
       'description': description,
       'visual': visual,
       'isHighlighted': isHighlighted,
+      'fractionData': fractionData,
     };
   }
 
@@ -27,6 +30,9 @@ class ExplanationStep {
       description: map['description'] as String,
       visual: map['visual'] as String?,
       isHighlighted: map['isHighlighted'] as bool? ?? false,
+      fractionData: map['fractionData'] != null
+          ? Map<String, String>.from(map['fractionData'] as Map)
+          : null,
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/localization/app_localizations.dart';
+import '../../../shared/widgets/fraction_display.dart';
 import '../models/explanation.dart';
 
 /// عنصر عرض خطوة من الشرح التفصيلي - تصميم احترافي محسّن
@@ -152,15 +153,39 @@ class ExplanationStepWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // الوصف
-                Text(
-                  _translateOrKeep(context, step.description),
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: AppColors.textPrimary,
-                    height: 1.7,
-                    fontSize: 15,
+                // الوصف (مع دعم الكسور المضمنة)
+                RichText(
+                  text: TextSpan(
+                    children: FractionFormatter.parseInlineText(
+                      _translateOrKeep(context, step.description),
+                      fontSize: 15,
+                      color: AppColors.textPrimary,
+                    ),
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: AppColors.textPrimary,
+                      height: 1.7,
+                      fontSize: 15,
+                    ),
                   ),
                 ),
+                
+                // عرض الكسور بشكل عمودي إذا كانت موجودة
+                if (step.fractionData != null) ...[
+                  const SizedBox(height: 16),
+                  Center(
+                    child: FractionEquation(
+                      num1: step.fractionData!['num1'] ?? '',
+                      den1: step.fractionData!['den1'] ?? '',
+                      operator: step.fractionData!['operator'] ?? '+',
+                      num2: step.fractionData!['num2'] ?? '',
+                      den2: step.fractionData!['den2'] ?? '',
+                      resultNum: step.fractionData!['resultNum'] ?? '',
+                      resultDen: step.fractionData!['resultDen'] ?? '',
+                      fontSize: 24,
+                      color: AppColors.primary,
+                    ),
+                  ),
+                ],
 
                 // العرض المرئي (إذا وجد)
                 if (step.visual != null) ...[
