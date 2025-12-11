@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import '../../features/operations/models/explanation.dart';
 import '../../features/operations/models/operation_type.dart';
 import 'number_formatter.dart';
@@ -1016,8 +1017,8 @@ extension DoubleExtensions on double {
       }
       return exponent < 0 ? 1 / result : result;
     } else {
-      // استخدام اللوغاريتم للأسس العشرية
-      return 0; // سيتم تحسينه لاحقاً
+      // استخدام dart:math للأسس العشرية
+      return math.pow(base, exponent).toDouble();
     }
   }
 }
