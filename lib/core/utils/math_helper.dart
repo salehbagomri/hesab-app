@@ -488,8 +488,7 @@ class MathHelper {
       steps: [
         ExplanationStep(
           title: '📝 المسألة',
-          description:
-              'نريد حساب جمع الكسرين',
+          description: 'نريد حساب جمع الكسرين',
           fractionData: {
             'num1': '${num1.toInt()}',
             'den1': '${den1.toInt()}',
@@ -506,9 +505,18 @@ class MathHelper {
         ),
         ExplanationStep(
           title: '📊 تحويل الكسور',
-          description:
-              'نحول الكسرين لنفس المقام ($lcm)',
-          visual: '${num1.toInt()}/${den1.toInt()} = ${newNum1.toInt()}/$lcm\n${num2.toInt()}/${den2.toInt()} = ${newNum2.toInt()}/$lcm',
+          description: 'نحول الكسرين لنفس المقام ($lcm)',
+          fractionData: {
+            'num1': '${num1.toInt()}',
+            'den1': '${den1.toInt()}',
+            'operator': '=',
+            'num2': '${newNum1.toInt()}',
+            'den2': '$lcm',
+            'resultNum': '',
+            'resultDen': '',
+            'extraLine':
+                '${num2.toInt()}/${den2.toInt()} = ${newNum2.toInt()}/$lcm',
+          },
         ),
         ExplanationStep(
           title: '➕ جمع البسوط',
@@ -524,8 +532,11 @@ class MathHelper {
           title: '✅ النتيجة النهائية',
           description: simplifiedDen == 1
               ? 'الناتج = $simplifiedNum'
-              : 'الناتج = $simplifiedNum/$simplifiedDen',
+              : 'الناتج',
           isHighlighted: true,
+          fractionData: simplifiedDen == 1
+              ? null
+              : {'resultNum': '$simplifiedNum', 'resultDen': '$simplifiedDen'},
         ),
       ],
     );
@@ -625,6 +636,7 @@ class MathHelper {
         ExplanationStep(
           title: '📝 المسألة',
           description: 'النسبة بين ${a.toInt()} و ${b.toInt()}',
+          fractionData: {'num1': '${a.toInt()}', 'den1': '${b.toInt()}'},
         ),
         ExplanationStep(
           title: '🔢 القاسم المشترك الأكبر',
@@ -633,6 +645,7 @@ class MathHelper {
         ExplanationStep(
           title: '✂️ التبسيط',
           description: '${a.toInt()}÷$gcd : ${b.toInt()}÷$gcd',
+          fractionData: {'num1': '$simplifiedA', 'den1': '$simplifiedB'},
         ),
         ExplanationStep(
           title: '📊 النسبة العشرية',
@@ -641,8 +654,9 @@ class MathHelper {
         ),
         ExplanationStep(
           title: '✅ النتيجة النهائية',
-          description: 'النسبة = $simplifiedA:$simplifiedB',
+          description: 'النسبة',
           isHighlighted: true,
+          fractionData: {'num1': '$simplifiedA', 'den1': '$simplifiedB'},
         ),
       ],
     );
@@ -920,6 +934,11 @@ class MathHelper {
     final probability = favorable / total;
     final percentage = probability * 100;
 
+    // تبسيط الكسر
+    final gcd = _gcd(favorable, total);
+    final simplifiedFav = (favorable / gcd).toInt();
+    final simplifiedTotal = (total / gcd).toInt();
+
     return Explanation(
       result:
           '${NumberFormatter.formatWithPrecision(probability, 3)} أو ${NumberFormatter.formatWithPrecision(percentage, 1)}%',
@@ -935,8 +954,18 @@ class MathHelper {
         ),
         ExplanationStep(
           title: '🔢 التعويض',
-          description: 'P = $favorable / $total',
+          description: 'P',
+          fractionData: {'num1': '$favorable', 'den1': '$total'},
         ),
+        if (gcd > 1)
+          ExplanationStep(
+            title: '✂️ التبسيط',
+            description: 'نقسم البسط والمقام على $gcd',
+            fractionData: {
+              'num1': '$simplifiedFav',
+              'den1': '$simplifiedTotal',
+            },
+          ),
         ExplanationStep(
           title: '✅ النتيجة',
           description:

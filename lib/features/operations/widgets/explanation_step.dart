@@ -168,22 +168,40 @@ class ExplanationStepWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                
+
                 // عرض الكسور بشكل عمودي إذا كانت موجودة
                 if (step.fractionData != null) ...[
                   const SizedBox(height: 16),
                   Center(
-                    child: FractionEquation(
-                      num1: step.fractionData!['num1'] ?? '',
-                      den1: step.fractionData!['den1'] ?? '',
-                      operator: step.fractionData!['operator'] ?? '+',
-                      num2: step.fractionData!['num2'] ?? '',
-                      den2: step.fractionData!['den2'] ?? '',
-                      resultNum: step.fractionData!['resultNum'] ?? '',
-                      resultDen: step.fractionData!['resultDen'] ?? '',
-                      fontSize: 24,
-                      color: AppColors.primary,
-                    ),
+                    // إذا كان فقط num1 و den1 موجودين (بدون عملية)
+                    child:
+                        (step.fractionData!['num2'] == null ||
+                            step.fractionData!['num2']!.isEmpty)
+                        ? FractionDisplay(
+                            numerator:
+                                step.fractionData!['num1'] ??
+                                step.fractionData!['resultNum'] ??
+                                '',
+                            denominator:
+                                step.fractionData!['den1'] ??
+                                step.fractionData!['resultDen'] ??
+                                '',
+                            fontSize: 24,
+                            color: AppColors.primary,
+                            fontWeight: FontWeight.bold,
+                          )
+                        : FractionEquation(
+                            num1: step.fractionData!['num1'] ?? '',
+                            den1: step.fractionData!['den1'] ?? '',
+                            operator: step.fractionData!['operator'] ?? '+',
+                            num2: step.fractionData!['num2'] ?? '',
+                            den2: step.fractionData!['den2'] ?? '',
+                            resultNum: step.fractionData!['resultNum'] ?? '',
+                            resultDen: step.fractionData!['resultDen'] ?? '',
+                            extraLine: step.fractionData!['extraLine'],
+                            fontSize: 24,
+                            color: AppColors.primary,
+                          ),
                   ),
                 ],
 

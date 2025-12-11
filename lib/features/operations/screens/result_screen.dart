@@ -9,6 +9,7 @@ import '../../../core/utils/math_helper.dart';
 import '../../../core/utils/number_formatter.dart';
 import '../../../shared/widgets/custom_app_bar.dart';
 import '../../../shared/widgets/custom_button.dart';
+import '../../../shared/widgets/fraction_display.dart';
 import '../../history/providers/history_provider.dart';
 import '../models/operation_type.dart';
 import '../widgets/explanation_step.dart';
@@ -210,16 +211,7 @@ class _ResultScreenState extends ConsumerState<ResultScreen>
                       width: 1.5,
                     ),
                   ),
-                  child: Text(
-                    explanation.result,
-                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                      fontSize: 42,
-                      letterSpacing: -0.5,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
+                  child: _buildResultDisplay(context, explanation.result),
                 ),
               ],
             ),
@@ -567,5 +559,34 @@ ${explanation.steps.asMap().entries.map((e) => '${e.key + 1}. ${e.value.title}\n
     AppLocalizations localizations,
   ) {
     _copyResult(context, explanation, localizations);
+  }
+
+  /// بناء عرض النتيجة - يدعم الكسور العمودية
+  Widget _buildResultDisplay(BuildContext context, String result) {
+    // التحقق من وجود كسر في النتيجة (مثل: 3/4 أو 15:20)
+    final fractionMatch = RegExp(r'^(\d+)[\/:](\d+)$').firstMatch(result);
+
+    if (fractionMatch != null) {
+      // عرض الكسر بشكل عمودي
+      return FractionDisplay(
+        numerator: fractionMatch.group(1)!,
+        denominator: fractionMatch.group(2)!,
+        fontSize: 42,
+        color: Colors.white,
+        fontWeight: FontWeight.w800,
+      );
+    }
+
+    // عرض نصي عادي للأرقام العادية
+    return Text(
+      result,
+      style: Theme.of(context).textTheme.displaySmall?.copyWith(
+        color: Colors.white,
+        fontWeight: FontWeight.w800,
+        fontSize: 42,
+        letterSpacing: -0.5,
+      ),
+      textAlign: TextAlign.center,
+    );
   }
 }

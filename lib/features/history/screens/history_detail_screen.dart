@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/localization/app_localizations.dart';
 import '../../../shared/widgets/custom_app_bar.dart';
+import '../../../shared/widgets/fraction_display.dart';
 import '../../operations/models/explanation.dart';
 import '../../operations/widgets/explanation_step.dart';
 import '../models/history_item.dart';
@@ -61,13 +62,7 @@ class HistoryDetailScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  explanation.result,
-                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
+                _buildResultDisplay(context, explanation.result),
               ],
             ),
           ),
@@ -194,5 +189,30 @@ class HistoryDetailScreen extends StatelessWidget {
       default:
         return level;
     }
+  }
+
+  /// بناء عرض النتيجة مع دعم الكسور
+  Widget _buildResultDisplay(BuildContext context, String result) {
+    // التحقق من وجود كسر في النتيجة
+    final fractionMatch = RegExp(r'^(\d+)[\/:](\d+)$').firstMatch(result);
+
+    if (fractionMatch != null) {
+      return FractionDisplay(
+        numerator: fractionMatch.group(1)!,
+        denominator: fractionMatch.group(2)!,
+        fontSize: 32,
+        color: Colors.white,
+        fontWeight: FontWeight.w700,
+      );
+    }
+
+    // عرض نصي عادي
+    return Text(
+      result,
+      style: Theme.of(context).textTheme.displaySmall?.copyWith(
+        color: Colors.white,
+        fontWeight: FontWeight.w700,
+      ),
+    );
   }
 }

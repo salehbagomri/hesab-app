@@ -51,6 +51,7 @@ class FractionDisplay extends StatelessWidget {
 }
 
 /// Widget لعرض معادلة كسور كاملة (كسر + عملية + كسر = نتيجة)
+/// يدعم عرض سطر إضافي للتحويلات (مثل: 1/2 = 2/4)
 class FractionEquation extends StatelessWidget {
   final String num1;
   final String den1;
@@ -59,6 +60,7 @@ class FractionEquation extends StatelessWidget {
   final String den2;
   final String resultNum;
   final String resultDen;
+  final String? extraLine; // سطر إضافي للتحويلات
   final double fontSize;
   final Color? color;
 
@@ -71,66 +73,87 @@ class FractionEquation extends StatelessWidget {
     required this.den2,
     required this.resultNum,
     required this.resultDen,
+    this.extraLine,
     this.fontSize = 24,
     this.color,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        // الكسر الأول
-        FractionDisplay(
-          numerator: num1,
-          denominator: den1,
-          fontSize: fontSize,
-          color: color,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // الكسر الأول
+            FractionDisplay(
+              numerator: num1,
+              denominator: den1,
+              fontSize: fontSize,
+              color: color,
+            ),
+
+            // العملية
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                operator,
+                style: TextStyle(
+                  fontSize: fontSize * 1.2,
+                  color: color ?? Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+
+            // الكسر الثاني
+            FractionDisplay(
+              numerator: num2,
+              denominator: den2,
+              fontSize: fontSize,
+              color: color,
+            ),
+
+            // علامة يساوي والنتيجة إذا كانت موجودة
+            if (resultNum.isNotEmpty && resultDen.isNotEmpty) ...[
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  '=',
+                  style: TextStyle(
+                    fontSize: fontSize * 1.2,
+                    color: color ?? Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+
+              // النتيجة
+              FractionDisplay(
+                numerator: resultNum,
+                denominator: resultDen,
+                fontSize: fontSize,
+                color: color,
+                fontWeight: FontWeight.bold,
+              ),
+            ],
+          ],
         ),
 
-        // العملية
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Text(
-            operator,
-            style: TextStyle(
-              fontSize: fontSize * 1.2,
-              color: color ?? Colors.black,
-              fontWeight: FontWeight.bold,
+        // السطر الإضافي إن وجد
+        if (extraLine != null && extraLine!.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(
+              extraLine!,
+              style: TextStyle(
+                fontSize: fontSize * 0.8,
+                color: color ?? Colors.black,
+              ),
             ),
           ),
-        ),
-
-        // الكسر الثاني
-        FractionDisplay(
-          numerator: num2,
-          denominator: den2,
-          fontSize: fontSize,
-          color: color,
-        ),
-
-        // علامة يساوي
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Text(
-            '=',
-            style: TextStyle(
-              fontSize: fontSize * 1.2,
-              color: color ?? Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-
-        // النتيجة
-        FractionDisplay(
-          numerator: resultNum,
-          denominator: resultDen,
-          fontSize: fontSize,
-          color: color,
-          fontWeight: FontWeight.bold,
-        ),
       ],
     );
   }

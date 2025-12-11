@@ -6,6 +6,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/localization/app_localizations.dart';
 import '../../../shared/widgets/custom_app_bar.dart';
 import '../../../shared/widgets/custom_card.dart';
+import '../../../shared/widgets/fraction_display.dart';
 import '../../operations/models/explanation.dart';
 import '../providers/history_provider.dart';
 
@@ -79,9 +80,11 @@ class HistoryScreen extends ConsumerWidget {
                                       ),
                                 ),
                                 const SizedBox(height: 4),
-                                Text(
+                                // عرض النتيجة مع دعم الكسور
+                                _buildResultDisplay(
+                                  context,
                                   '${item.input} = ${item.result}',
-                                  style: Theme.of(context).textTheme.bodyLarge,
+                                  item.result,
                                 ),
                               ],
                             ),
@@ -229,5 +232,35 @@ class HistoryScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  /// بناء عرض النتيجة مع دعم الكسور
+  Widget _buildResultDisplay(
+    BuildContext context,
+    String fullText,
+    String result,
+  ) {
+    // التحقق من وجود كسر في النتيجة
+    final fractionMatch = RegExp(r'^(\d+)[\/:](\d+)$').firstMatch(result);
+
+    if (fractionMatch != null) {
+      // استخراج المدخلات قبل علامة =
+      final inputPart = fullText.split('=')[0].trim();
+
+      return Row(
+        children: [
+          Text('$inputPart = ', style: Theme.of(context).textTheme.bodyLarge),
+          FractionDisplay(
+            numerator: fractionMatch.group(1)!,
+            denominator: fractionMatch.group(2)!,
+            fontSize: 16,
+            color: AppColors.textPrimary,
+          ),
+        ],
+      );
+    }
+
+    // عرض نصي عادي
+    return Text(fullText, style: Theme.of(context).textTheme.bodyLarge);
   }
 }
