@@ -103,7 +103,7 @@ class MathHelper {
             ),
           ExplanationStep(
             title: 'expFinalResult',
-            description: '$aInt + $bInt = ${result.toInt()}',
+            description: '$aInt + $bInt = ${NumberFormatter.format(result)}',
             isHighlighted: true,
           ),
         ],
@@ -163,7 +163,7 @@ class MathHelper {
             ),
           ExplanationStep(
             title: 'expFinalResult',
-            description: '$aInt - $bInt = ${result.toInt()}',
+            description: '$aInt - $bInt = ${NumberFormatter.format(result)}',
             isHighlighted: true,
           ),
         ],
@@ -208,11 +208,11 @@ class MathHelper {
           ),
           ExplanationStep(
             title: 'expMultiplicationTable',
-            description: '$aInt × $bInt = ${result.toInt()}',
+            description: '$aInt × $bInt = ${NumberFormatter.format(result)}',
           ),
           ExplanationStep(
             title: 'expFinalResult',
-            description: 'expTheResult ${result.toInt()}',
+            description: 'expTheResult ${NumberFormatter.format(result)}',
             isHighlighted: true,
           ),
         ],
@@ -271,7 +271,7 @@ class MathHelper {
         ExplanationStep(
           title: 'expDivision',
           description: isExact
-              ? '$a ÷ $b = ${result.toInt()} (exactDivision)'
+              ? '$a ÷ $b = ${NumberFormatter.format(result)} (exactDivision)'
               : '$a ÷ $b = ${NumberFormatter.formatWithPrecision(result, 2)}',
         ),
         if (!isExact)
@@ -283,7 +283,7 @@ class MathHelper {
         ExplanationStep(
           title: 'expFinalResult',
           description: isExact
-              ? 'expTheResult ${result.toInt()}'
+              ? 'expTheResult ${NumberFormatter.format(result)}'
               : 'expTheResult ${NumberFormatter.formatWithPrecision(result, 2)}',
           isHighlighted: true,
         ),
@@ -349,18 +349,19 @@ class MathHelper {
         ExplanationStep(
           title: '🔢 الجذر التربيعي',
           description: isPerfectSquare
-              ? '√$number = ${result.toInt()} (عدد صحيح)'
+              ? '√$number = ${NumberFormatter.format(result)} (عدد صحيح)'
               : '√$number ≈ ${NumberFormatter.formatWithPrecision(result, 2)}',
         ),
         if (isPerfectSquare)
           ExplanationStep(
             title: '✔️ التحقق',
-            description: '${result.toInt()} × ${result.toInt()} = $number ✓',
+            description:
+                '${NumberFormatter.format(result)} × ${NumberFormatter.format(result)} = $number ✓',
           ),
         ExplanationStep(
           title: '✅ النتيجة النهائية',
           description: isPerfectSquare
-              ? 'الناتج = ${result.toInt()}'
+              ? 'الناتج = ${NumberFormatter.format(result)}'
               : 'الناتج ≈ ${NumberFormatter.formatWithPrecision(result, 2)}',
           isHighlighted: true,
         ),
