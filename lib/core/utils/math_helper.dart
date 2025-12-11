@@ -1,5 +1,6 @@
 import '../../features/operations/models/explanation.dart';
 import '../../features/operations/models/operation_type.dart';
+import 'number_formatter.dart';
 
 /// مساعد للعمليات الحسابية وتوليد الشرح التفصيلي
 class MathHelper {
@@ -79,7 +80,7 @@ class MathHelper {
     if (isInteger && aInt < 1000 && bInt < 1000) {
       // شرح مفصل للأرقام الصحيحة الصغيرة
       return Explanation(
-        result: result.toStringAsFixed(0),
+        result: NumberFormatter.formatWithPrecision(result, 0),
         steps: [
           ExplanationStep(
             title: 'expProblem',
@@ -110,7 +111,7 @@ class MathHelper {
     } else {
       // شرح بسيط للأرقام الكبيرة أو العشرية
       return Explanation(
-        result: result.toString(),
+        result: NumberFormatter.format(result),
         steps: [
           ExplanationStep(
             title: 'expProblem',
@@ -139,7 +140,7 @@ class MathHelper {
 
     if (isInteger && aInt < 1000 && bInt < 1000) {
       return Explanation(
-        result: result.toStringAsFixed(0),
+        result: NumberFormatter.formatWithPrecision(result, 0),
         steps: [
           ExplanationStep(
             title: 'expProblem',
@@ -169,7 +170,7 @@ class MathHelper {
       );
     } else {
       return Explanation(
-        result: result.toString(),
+        result: NumberFormatter.format(result),
         steps: [
           ExplanationStep(
             title: 'expProblem',
@@ -199,7 +200,7 @@ class MathHelper {
     if (isInteger && aInt <= 12 && bInt <= 12) {
       // جدول الضرب البسيط
       return Explanation(
-        result: result.toStringAsFixed(0),
+        result: NumberFormatter.formatWithPrecision(result, 0),
         steps: [
           ExplanationStep(
             title: 'expProblem',
@@ -218,7 +219,7 @@ class MathHelper {
       );
     } else {
       return Explanation(
-        result: result.toString(),
+        result: NumberFormatter.format(result),
         steps: [
           ExplanationStep(
             title: 'expProblem',
@@ -259,7 +260,9 @@ class MathHelper {
     final isExact = remainder == 0;
 
     return Explanation(
-      result: isExact ? result.toStringAsFixed(0) : result.toStringAsFixed(2),
+      result: isExact
+          ? NumberFormatter.formatWithPrecision(result, 0)
+          : NumberFormatter.formatWithPrecision(result, 2),
       steps: [
         ExplanationStep(
           title: 'expProblem',
@@ -269,18 +272,19 @@ class MathHelper {
           title: 'expDivision',
           description: isExact
               ? '$a ÷ $b = ${result.toInt()} (exactDivision)'
-              : '$a ÷ $b = ${result.toStringAsFixed(2)}',
+              : '$a ÷ $b = ${NumberFormatter.formatWithPrecision(result, 2)}',
         ),
         if (!isExact)
           ExplanationStep(
             title: 'expNote',
-            description: 'remainder = ${remainder.toStringAsFixed(2)}',
+            description:
+                'remainder = ${NumberFormatter.formatWithPrecision(remainder, 2)}',
           ),
         ExplanationStep(
           title: 'expFinalResult',
           description: isExact
               ? 'expTheResult ${result.toInt()}'
-              : 'expTheResult ${result.toStringAsFixed(2)}',
+              : 'expTheResult ${NumberFormatter.formatWithPrecision(result, 2)}',
           isHighlighted: true,
         ),
       ],
@@ -292,7 +296,7 @@ class MathHelper {
     final result = (percentage / 100) * number;
 
     return Explanation(
-      result: result.toStringAsFixed(2),
+      result: NumberFormatter.formatWithPrecision(result, 2),
       steps: [
         ExplanationStep(
           title: '📝 المسألة',
@@ -335,8 +339,8 @@ class MathHelper {
 
     return Explanation(
       result: isPerfectSquare
-          ? result.toStringAsFixed(0)
-          : result.toStringAsFixed(2),
+          ? NumberFormatter.formatWithPrecision(result, 0)
+          : NumberFormatter.formatWithPrecision(result, 2),
       steps: [
         ExplanationStep(
           title: '📝 المسألة',
@@ -346,7 +350,7 @@ class MathHelper {
           title: '🔢 الجذر التربيعي',
           description: isPerfectSquare
               ? '√$number = ${result.toInt()} (عدد صحيح)'
-              : '√$number ≈ ${result.toStringAsFixed(2)}',
+              : '√$number ≈ ${NumberFormatter.formatWithPrecision(result, 2)}',
         ),
         if (isPerfectSquare)
           ExplanationStep(
@@ -357,7 +361,7 @@ class MathHelper {
           title: '✅ النتيجة النهائية',
           description: isPerfectSquare
               ? 'الناتج = ${result.toInt()}'
-              : 'الناتج ≈ ${result.toStringAsFixed(2)}',
+              : 'الناتج ≈ ${NumberFormatter.formatWithPrecision(result, 2)}',
           isHighlighted: true,
         ),
       ],
@@ -369,7 +373,7 @@ class MathHelper {
     final result = base.pow(exponent);
 
     return Explanation(
-      result: result.toString(),
+      result: NumberFormatter.format(result),
       steps: [
         ExplanationStep(
           title: '📝 المسألة',
@@ -512,7 +516,7 @@ class MathHelper {
     final result = b - a;
 
     return Explanation(
-      result: result.toString(),
+      result: NumberFormatter.format(result),
       steps: [
         ExplanationStep(title: '📝 المعادلة', description: 'x + $a = $b'),
         ExplanationStep(
@@ -552,7 +556,7 @@ class MathHelper {
     final numbersStr = numbers.map((n) => n.toString()).join(' + ');
 
     return Explanation(
-      result: average.toStringAsFixed(2),
+      result: NumberFormatter.formatWithPrecision(average, 2),
       steps: [
         ExplanationStep(
           title: '📝 الأرقام',
@@ -568,7 +572,8 @@ class MathHelper {
         ),
         ExplanationStep(
           title: '✅ النتيجة النهائية',
-          description: 'المتوسط الحسابي = ${average.toStringAsFixed(2)}',
+          description:
+              'المتوسط الحسابي = ${NumberFormatter.formatWithPrecision(average, 2)}',
           isHighlighted: true,
         ),
       ],
@@ -612,7 +617,7 @@ class MathHelper {
         ExplanationStep(
           title: '📊 النسبة العشرية',
           description:
-              '${a.toInt()} ÷ ${b.toInt()} = ${ratio.toStringAsFixed(2)}',
+              '${a.toInt()} ÷ ${b.toInt()} = ${NumberFormatter.formatWithPrecision(ratio, 2)}',
         ),
         ExplanationStep(
           title: '✅ النتيجة النهائية',
@@ -631,7 +636,7 @@ class MathHelper {
 
     if (isSquare) {
       return Explanation(
-        result: area.toStringAsFixed(2),
+        result: NumberFormatter.formatWithPrecision(area, 2),
         steps: [
           ExplanationStep(
             title: '📐 نوع الشكل',
@@ -647,14 +652,15 @@ class MathHelper {
           ),
           ExplanationStep(
             title: '✅ النتيجة النهائية',
-            description: 'مساحة المربع = ${area.toStringAsFixed(2)} وحدة مربعة',
+            description:
+                'مساحة المربع = ${NumberFormatter.formatWithPrecision(area, 2)} وحدة مربعة',
             isHighlighted: true,
           ),
         ],
       );
     } else {
       return Explanation(
-        result: area.toStringAsFixed(2),
+        result: NumberFormatter.formatWithPrecision(area, 2),
         steps: [
           ExplanationStep(
             title: '📐 نوع الشكل',
@@ -671,7 +677,7 @@ class MathHelper {
           ExplanationStep(
             title: '✅ النتيجة النهائية',
             description:
-                'مساحة المستطيل = ${area.toStringAsFixed(2)} وحدة مربعة',
+                'مساحة المستطيل = ${NumberFormatter.formatWithPrecision(area, 2)} وحدة مربعة',
             isHighlighted: true,
           ),
         ],
@@ -805,7 +811,7 @@ class MathHelper {
     final result = _logApprox(number) / _logApprox(base);
 
     return Explanation(
-      result: result.toStringAsFixed(4),
+      result: NumberFormatter.formatWithPrecision(result, 4),
       steps: [
         ExplanationStep(
           title: '📝 المسألة',
@@ -821,7 +827,8 @@ class MathHelper {
         ),
         ExplanationStep(
           title: '✅ النتيجة',
-          description: 'log_$base($number) = ${result.toStringAsFixed(4)}',
+          description:
+              'log_$base($number) = ${NumberFormatter.formatWithPrecision(result, 4)}',
           isHighlighted: true,
         ),
       ],
@@ -845,7 +852,7 @@ class MathHelper {
     }
 
     return Explanation(
-      result: 'المجموع = ${sum.toStringAsFixed(0)}',
+      result: 'المجموع = ${NumberFormatter.formatWithPrecision(sum, 0)}',
       steps: [
         ExplanationStep(
           title: '📝 معطيات المتتالية',
@@ -868,7 +875,8 @@ class MathHelper {
         ),
         ExplanationStep(
           title: '✅ النتيجة',
-          description: 'مجموع المتتالية = ${sum.toStringAsFixed(0)}',
+          description:
+              'مجموع المتتالية = ${NumberFormatter.formatWithPrecision(sum, 0)}',
           isHighlighted: true,
         ),
       ],
@@ -894,7 +902,7 @@ class MathHelper {
 
     return Explanation(
       result:
-          '${probability.toStringAsFixed(3)} أو ${percentage.toStringAsFixed(1)}%',
+          '${NumberFormatter.formatWithPrecision(probability, 3)} أو ${NumberFormatter.formatWithPrecision(percentage, 1)}%',
       steps: [
         ExplanationStep(
           title: '📝 المعطيات',
@@ -912,7 +920,7 @@ class MathHelper {
         ExplanationStep(
           title: '✅ النتيجة',
           description:
-              'الاحتمال = ${probability.toStringAsFixed(3)}\nبالنسبة المئوية = ${percentage.toStringAsFixed(1)}%',
+              'الاحتمال = ${NumberFormatter.formatWithPrecision(probability, 3)}\nبالنسبة المئوية = ${NumberFormatter.formatWithPrecision(percentage, 1)}%',
           isHighlighted: true,
         ),
       ],

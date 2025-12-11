@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/localization/app_localizations.dart';
 import '../../../core/utils/math_helper.dart';
+import '../../../core/utils/number_formatter.dart';
 import '../../../shared/widgets/custom_app_bar.dart';
 import '../../../shared/widgets/custom_button.dart';
 import '../../history/providers/history_provider.dart';
@@ -288,7 +289,7 @@ class _ResultScreenState extends ConsumerState<ResultScreen>
                   border: Border.all(color: AppColors.primary.withOpacity(0.2)),
                 ),
                 child: Text(
-                  entry.value.toString(),
+                  NumberFormatter.format(entry.value),
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     fontWeight: FontWeight.w600,
                     color: AppColors.primary,
