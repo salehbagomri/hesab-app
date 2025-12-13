@@ -85,7 +85,8 @@ class MathHelper {
         steps: [
           ExplanationStep(
             title: 'expProblem',
-            description: 'expWeWantToCalculate $aInt + $bInt',
+            description:
+                'expWeWantToCalculate ${NumberFormatter.format(aInt.toDouble())} + ${NumberFormatter.format(bInt.toDouble())}',
           ),
           ExplanationStep(
             title: 'expArrangeNumbers',
@@ -104,7 +105,8 @@ class MathHelper {
             ),
           ExplanationStep(
             title: 'expFinalResult',
-            description: '$aInt + $bInt = ${NumberFormatter.format(result)}',
+            description:
+                '${NumberFormatter.format(aInt.toDouble())} + ${NumberFormatter.format(bInt.toDouble())} = ${NumberFormatter.format(result)}',
             isHighlighted: true,
           ),
         ],
@@ -116,7 +118,8 @@ class MathHelper {
         steps: [
           ExplanationStep(
             title: 'expProblem',
-            description: 'expWeWantToCalculate $a + $b',
+            description:
+                'expWeWantToCalculate ${NumberFormatter.format(a)} + ${NumberFormatter.format(b)}',
           ),
           ExplanationStep(
             title: 'expCalculation',
@@ -124,7 +127,8 @@ class MathHelper {
           ),
           ExplanationStep(
             title: 'expFinalResult',
-            description: '$a + $b = $result',
+            description:
+                '${NumberFormatter.format(a)} + ${NumberFormatter.format(b)} = ${NumberFormatter.format(result)}',
             isHighlighted: true,
           ),
         ],
@@ -145,7 +149,8 @@ class MathHelper {
         steps: [
           ExplanationStep(
             title: 'expProblem',
-            description: 'expWeWantToCalculate $aInt - $bInt',
+            description:
+                'expWeWantToCalculate ${NumberFormatter.format(aInt.toDouble())} - ${NumberFormatter.format(bInt.toDouble())}',
           ),
           ExplanationStep(
             title: 'expArrangeNumbers',
@@ -164,7 +169,8 @@ class MathHelper {
             ),
           ExplanationStep(
             title: 'expFinalResult',
-            description: '$aInt - $bInt = ${NumberFormatter.format(result)}',
+            description:
+                '${NumberFormatter.format(aInt.toDouble())} - ${NumberFormatter.format(bInt.toDouble())} = ${NumberFormatter.format(result)}',
             isHighlighted: true,
           ),
         ],
@@ -175,7 +181,8 @@ class MathHelper {
         steps: [
           ExplanationStep(
             title: 'expProblem',
-            description: 'expWeWantToCalculate $a - $b',
+            description:
+                'expWeWantToCalculate ${NumberFormatter.format(a)} - ${NumberFormatter.format(b)}',
           ),
           ExplanationStep(
             title: 'expCalculation',
@@ -183,7 +190,8 @@ class MathHelper {
           ),
           ExplanationStep(
             title: 'expFinalResult',
-            description: '$a - $b = $result',
+            description:
+                '${NumberFormatter.format(a)} - ${NumberFormatter.format(b)} = ${NumberFormatter.format(result)}',
             isHighlighted: true,
           ),
         ],
@@ -205,11 +213,13 @@ class MathHelper {
         steps: [
           ExplanationStep(
             title: 'expProblem',
-            description: 'expWeWantToCalculate $aInt × $bInt',
+            description:
+                'expWeWantToCalculate ${NumberFormatter.format(aInt.toDouble())} × ${NumberFormatter.format(bInt.toDouble())}',
           ),
           ExplanationStep(
             title: 'expMultiplicationTable',
-            description: '$aInt × $bInt = ${NumberFormatter.format(result)}',
+            description:
+                '${NumberFormatter.format(aInt.toDouble())} × ${NumberFormatter.format(bInt.toDouble())} = ${NumberFormatter.format(result)}',
           ),
           ExplanationStep(
             title: 'expFinalResult',
@@ -224,7 +234,8 @@ class MathHelper {
         steps: [
           ExplanationStep(
             title: 'expProblem',
-            description: 'expWeWantToCalculate $a × $b',
+            description:
+                'expWeWantToCalculate ${NumberFormatter.format(a)} × ${NumberFormatter.format(b)}',
           ),
           ExplanationStep(
             title: 'expMultiply',
@@ -232,7 +243,8 @@ class MathHelper {
           ),
           ExplanationStep(
             title: 'expFinalResult',
-            description: '$a × $b = $result',
+            description:
+                '${NumberFormatter.format(a)} × ${NumberFormatter.format(b)} = ${NumberFormatter.format(result)}',
             isHighlighted: true,
           ),
         ],
@@ -267,13 +279,14 @@ class MathHelper {
       steps: [
         ExplanationStep(
           title: 'expProblem',
-          description: 'expWeWantToCalculate $a ÷ $b',
+          description:
+              'expWeWantToCalculate ${NumberFormatter.format(a)} ÷ ${NumberFormatter.format(b)}',
         ),
         ExplanationStep(
           title: 'expDivision',
           description: isExact
-              ? '$a ÷ $b = ${NumberFormatter.format(result)} (exactDivision)'
-              : '$a ÷ $b = ${NumberFormatter.formatWithPrecision(result, 2)}',
+              ? '${NumberFormatter.format(a)} ÷ ${NumberFormatter.format(b)} = ${NumberFormatter.format(result)} (exactDivision)'
+              : '${NumberFormatter.format(a)} ÷ ${NumberFormatter.format(b)} = ${NumberFormatter.formatWithPrecision(result, 2)}',
         ),
         if (!isExact)
           ExplanationStep(
@@ -549,19 +562,28 @@ class MathHelper {
     return Explanation(
       result: NumberFormatter.format(result),
       steps: [
-        ExplanationStep(title: '📝 المعادلة', description: 'x + $a = $b'),
         ExplanationStep(
-          title: '🔢 نطرح $a من الطرفين',
-          description: 'x + $a - $a = $b - $a',
+          title: '📝 المعادلة',
+          description:
+              'x + ${NumberFormatter.format(a)} = ${NumberFormatter.format(b)}',
         ),
-        ExplanationStep(title: '📊 التبسيط', description: 'x = ${b - a}'),
+        ExplanationStep(
+          title: '🔢 نطرح ${NumberFormatter.format(a)} من الطرفين',
+          description:
+              'x + ${NumberFormatter.format(a)} - ${NumberFormatter.format(a)} = ${NumberFormatter.format(b)} - ${NumberFormatter.format(a)}',
+        ),
+        ExplanationStep(
+          title: '📊 التبسيط',
+          description: 'x = ${NumberFormatter.format(b - a)}',
+        ),
         ExplanationStep(
           title: '✔️ التحقق',
-          description: 'نعوّض: $result + $a = $b ✓',
+          description:
+              'نعوّض: ${NumberFormatter.format(result)} + ${NumberFormatter.format(a)} = ${NumberFormatter.format(b)} ✓',
         ),
         ExplanationStep(
           title: '✅ النتيجة النهائية',
-          description: 'x = $result',
+          description: 'x = ${NumberFormatter.format(result)}',
           isHighlighted: true,
         ),
       ],
@@ -584,22 +606,26 @@ class MathHelper {
 
     final sum = numbers.reduce((a, b) => a + b);
     final average = sum / numbers.length;
-    final numbersStr = numbers.map((n) => n.toString()).join(' + ');
+    final numbersStr = numbers
+        .map((n) => NumberFormatter.format(n))
+        .join(' + ');
 
     return Explanation(
       result: NumberFormatter.formatWithPrecision(average, 2),
       steps: [
         ExplanationStep(
           title: '📝 الأرقام',
-          description: 'الأرقام: ${numbers.join(", ")}',
+          description:
+              'الأرقام: ${numbers.map((n) => NumberFormatter.format(n)).join(", ")}',
         ),
         ExplanationStep(
           title: '➕ جمع الأرقام',
-          description: '$numbersStr = $sum',
+          description: '$numbersStr = ${NumberFormatter.format(sum)}',
         ),
         ExplanationStep(
           title: '➗ القسمة على العدد',
-          description: '$sum ÷ ${numbers.length} = $average',
+          description:
+              '${NumberFormatter.format(sum)} ÷ ${numbers.length} = ${NumberFormatter.formatWithPrecision(average, 2)}',
         ),
         ExplanationStep(
           title: '✅ النتيجة النهائية',
@@ -674,7 +700,7 @@ class MathHelper {
         steps: [
           ExplanationStep(
             title: '📐 نوع الشكل',
-            description: 'مربع بطول ضلع = $length',
+            description: 'مربع بطول ضلع = ${NumberFormatter.format(length)}',
           ),
           ExplanationStep(
             title: '📝 قانون مساحة المربع',
@@ -682,7 +708,8 @@ class MathHelper {
           ),
           ExplanationStep(
             title: '🔢 التعويض',
-            description: 'المساحة = $length × $length',
+            description:
+                'المساحة = ${NumberFormatter.format(length)} × ${NumberFormatter.format(length)}',
           ),
           ExplanationStep(
             title: '✅ النتيجة النهائية',
@@ -698,7 +725,8 @@ class MathHelper {
         steps: [
           ExplanationStep(
             title: '📐 نوع الشكل',
-            description: 'مستطيل بطول = $length وعرض = $width',
+            description:
+                'مستطيل بطول = ${NumberFormatter.format(length)} وعرض = ${NumberFormatter.format(width)}',
           ),
           ExplanationStep(
             title: '📝 قانون مساحة المستطيل',
@@ -706,7 +734,8 @@ class MathHelper {
           ),
           ExplanationStep(
             title: '🔢 التعويض',
-            description: 'المساحة = $length × $width',
+            description:
+                'المساحة = ${NumberFormatter.format(length)} × ${NumberFormatter.format(width)}',
           ),
           ExplanationStep(
             title: '✅ النتيجة النهائية',
@@ -729,11 +758,13 @@ class MathHelper {
         steps: [
           ExplanationStep(
             title: '📝 المعادلة',
-            description: '${a}x² + ${b}x + $c = 0',
+            description:
+                '${NumberFormatter.format(a)}x² + ${NumberFormatter.format(b)}x + ${NumberFormatter.format(c)} = 0',
           ),
           ExplanationStep(
             title: '🔢 حساب المميز (Δ)',
-            description: 'Δ = b² - 4ac = ${b}² - 4(${a})(${c}) = $discriminant',
+            description:
+                'Δ = b² - 4ac = ${NumberFormatter.format(b)}² - 4(${NumberFormatter.format(a)})(${NumberFormatter.format(c)}) = ${NumberFormatter.format(discriminant)}',
           ),
           ExplanationStep(
             title: '❌ النتيجة',
@@ -750,33 +781,35 @@ class MathHelper {
 
     return Explanation(
       result: discriminant == 0
-          ? 'x = ${x1.toStringAsFixed(2)}'
-          : 'x₁ = ${x1.toStringAsFixed(2)}, x₂ = ${x2.toStringAsFixed(2)}',
+          ? 'x = ${NumberFormatter.formatWithPrecision(x1, 2)}'
+          : 'x₁ = ${NumberFormatter.formatWithPrecision(x1, 2)}, x₂ = ${NumberFormatter.formatWithPrecision(x2, 2)}',
       steps: [
         ExplanationStep(
           title: '📝 المعادلة',
-          description: '${a}x² + ${b}x + $c = 0',
+          description:
+              '${NumberFormatter.format(a)}x² + ${NumberFormatter.format(b)}x + ${NumberFormatter.format(c)} = 0',
         ),
         ExplanationStep(
           title: '🔢 حساب المميز (Δ)',
-          description: 'Δ = b² - 4ac = ${b}² - 4(${a})(${c}) = $discriminant',
+          description:
+              'Δ = b² - 4ac = ${NumberFormatter.format(b)}² - 4(${NumberFormatter.format(a)})(${NumberFormatter.format(c)}) = ${NumberFormatter.format(discriminant)}',
         ),
         ExplanationStep(
           title: '📐 الجذر التربيعي للمميز',
           description:
-              '√Δ = √$discriminant = ${sqrtDiscriminant.toStringAsFixed(2)}',
+              '√Δ = √${NumberFormatter.format(discriminant)} = ${NumberFormatter.formatWithPrecision(sqrtDiscriminant, 2)}',
         ),
         ExplanationStep(
           title: '🔢 تطبيق القانون',
           description: discriminant == 0
-              ? 'x = -b/2a = ${(-b / (2 * a)).toStringAsFixed(2)}'
+              ? 'x = -b/2a = ${NumberFormatter.formatWithPrecision(-b / (2 * a), 2)}'
               : 'x = (-b ± √Δ) / 2a',
         ),
         ExplanationStep(
           title: '✅ الحلول',
           description: discriminant == 0
-              ? 'حل واحد: x = ${x1.toStringAsFixed(2)}'
-              : 'x₁ = ${x1.toStringAsFixed(2)}\nx₂ = ${x2.toStringAsFixed(2)}',
+              ? 'حل واحد: x = ${NumberFormatter.formatWithPrecision(x1, 2)}'
+              : 'x₁ = ${NumberFormatter.formatWithPrecision(x1, 2)}\nx₂ = ${NumberFormatter.formatWithPrecision(x2, 2)}',
           isHighlighted: true,
         ),
       ],
@@ -792,34 +825,36 @@ class MathHelper {
 
     return Explanation(
       result:
-          'sin=${sinValue.toStringAsFixed(3)}, cos=${cosValue.toStringAsFixed(3)}, tan=${tanValue.toStringAsFixed(3)}',
+          'sin=${NumberFormatter.formatWithPrecision(sinValue, 3)}, cos=${NumberFormatter.formatWithPrecision(cosValue, 3)}, tan=${NumberFormatter.formatWithPrecision(tanValue, 3)}',
       steps: [
         ExplanationStep(
           title: '📐 الزاوية',
-          description: 'الزاوية = $angleDegrees درجة',
+          description: 'الزاوية = ${NumberFormatter.format(angleDegrees)} درجة',
         ),
         ExplanationStep(
           title: '🔄 تحويل إلى راديان',
           description:
-              'الزاوية بالراديان = $angleDegrees × π/180 = ${angleRadians.toStringAsFixed(3)}',
+              'الزاوية بالراديان = ${NumberFormatter.format(angleDegrees)} × π/180 = ${NumberFormatter.formatWithPrecision(angleRadians, 3)}',
         ),
         ExplanationStep(
           title: '📊 حساب الجيب (sin)',
-          description: 'sin($angleDegrees°) = ${sinValue.toStringAsFixed(3)}',
+          description:
+              'sin(${NumberFormatter.format(angleDegrees)}°) = ${NumberFormatter.formatWithPrecision(sinValue, 3)}',
         ),
         ExplanationStep(
           title: '📊 حساب جيب التمام (cos)',
-          description: 'cos($angleDegrees°) = ${cosValue.toStringAsFixed(3)}',
+          description:
+              'cos(${NumberFormatter.format(angleDegrees)}°) = ${NumberFormatter.formatWithPrecision(cosValue, 3)}',
         ),
         ExplanationStep(
           title: '📊 حساب الظل (tan)',
           description:
-              'tan($angleDegrees°) = sin/cos = ${tanValue.toStringAsFixed(3)}',
+              'tan(${NumberFormatter.format(angleDegrees)}°) = sin/cos = ${NumberFormatter.formatWithPrecision(tanValue, 3)}',
         ),
         ExplanationStep(
           title: '✅ النتيجة',
           description:
-              'sin = ${sinValue.toStringAsFixed(3)}\ncos = ${cosValue.toStringAsFixed(3)}\ntan = ${tanValue.toStringAsFixed(3)}',
+              'sin = ${NumberFormatter.formatWithPrecision(sinValue, 3)}\ncos = ${NumberFormatter.formatWithPrecision(cosValue, 3)}\ntan = ${NumberFormatter.formatWithPrecision(tanValue, 3)}',
           isHighlighted: true,
         ),
       ],
@@ -881,7 +916,7 @@ class MathHelper {
     String sequence = '';
     for (int i = 0; i < terms; i++) {
       final term = first + i * difference;
-      sequence += '${term.toStringAsFixed(0)}';
+      sequence += NumberFormatter.format(term);
       if (i < terms - 1) sequence += ', ';
     }
 
@@ -891,13 +926,13 @@ class MathHelper {
         ExplanationStep(
           title: '📝 معطيات المتتالية',
           description:
-              'الحد الأول (a₁) = $first\nأساس المتتالية (d) = $difference\nعدد الحدود (n) = $terms',
+              'الحد الأول (a₁) = ${NumberFormatter.format(first)}\nأساس المتتالية (d) = ${NumberFormatter.format(difference)}\nعدد الحدود (n) = $terms',
         ),
         ExplanationStep(title: '🔢 المتتالية', description: sequence),
         ExplanationStep(
           title: '📐 الحد الأخير',
           description:
-              'aₙ = a₁ + (n-1)d = $first + ($terms-1)×$difference = $lastTerm',
+              'aₙ = a₁ + (n-1)d = ${NumberFormatter.format(first)} + ($terms-1)×${NumberFormatter.format(difference)} = ${NumberFormatter.format(lastTerm)}',
         ),
         ExplanationStep(
           title: '📊 قانون المجموع',
@@ -905,7 +940,8 @@ class MathHelper {
         ),
         ExplanationStep(
           title: '🔢 التعويض',
-          description: 'S = $terms × ($first + $lastTerm) / 2',
+          description:
+              'S = $terms × (${NumberFormatter.format(first)} + ${NumberFormatter.format(lastTerm)}) / 2',
         ),
         ExplanationStep(
           title: '✅ النتيجة',
