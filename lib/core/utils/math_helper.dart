@@ -223,7 +223,7 @@ class MathHelper {
           ),
           ExplanationStep(
             title: 'expFinalResult',
-            description: 'expTheResult ${NumberFormatter.format(result)}',
+            description: 'الناتج: ${NumberFormatter.format(result)}',
             isHighlighted: true,
           ),
         ],
@@ -419,7 +419,7 @@ class MathHelper {
           ),
         ExplanationStep(
           title: '✅ النتيجة النهائية',
-          description: 'الناتج = $result',
+          description: 'الناتج = ${NumberFormatter.format(result)}',
           isHighlighted: true,
         ),
       ],
@@ -514,11 +514,13 @@ class MathHelper {
         ),
         ExplanationStep(
           title: '🔢 توحيد المقامات',
-          description: 'المضاعف المشترك الأصغر = $lcm',
+          description:
+              'المضاعف المشترك الأصغر = ${NumberFormatter.format(lcm.toDouble())}',
         ),
         ExplanationStep(
           title: '📊 تحويل الكسور',
-          description: 'نحول الكسرين لنفس المقام ($lcm)',
+          description:
+              'نحول الكسرين لنفس المقام (${NumberFormatter.format(lcm.toDouble())})',
           fractionData: {
             'num1': '${num1.toInt()}',
             'den1': '${den1.toInt()}',
@@ -534,17 +536,18 @@ class MathHelper {
         ExplanationStep(
           title: '➕ جمع البسوط',
           description:
-              '${newNum1.toInt()} + ${newNum2.toInt()} = ${resultNum.toInt()}',
+              '${NumberFormatter.format(newNum1)} + ${NumberFormatter.format(newNum2)} = ${NumberFormatter.format(resultNum)}',
         ),
         if (gcd > 1)
           ExplanationStep(
             title: '✂️ التبسيط',
-            description: 'نقسم البسط والمقام على $gcd',
+            description:
+                'نقسم البسط والمقام على ${NumberFormatter.format(gcd.toDouble())}',
           ),
         ExplanationStep(
           title: '✅ النتيجة النهائية',
           description: simplifiedDen == 1
-              ? 'الناتج = $simplifiedNum'
+              ? 'الناتج = ${NumberFormatter.format(simplifiedNum.toDouble())}'
               : 'الناتج',
           isHighlighted: true,
           fractionData: simplifiedDen == 1
@@ -661,22 +664,27 @@ class MathHelper {
       steps: [
         ExplanationStep(
           title: '📝 المسألة',
-          description: 'النسبة بين ${a.toInt()} و ${b.toInt()}',
-          fractionData: {'num1': '${a.toInt()}', 'den1': '${b.toInt()}'},
+          description:
+              'النسبة بين ${NumberFormatter.format(a)} و ${NumberFormatter.format(b)}',
+          fractionData: {
+            'num1': '${NumberFormatter.format(a)}',
+            'den1': '${NumberFormatter.format(b)}',
+          },
         ),
         ExplanationStep(
           title: '🔢 القاسم المشترك الأكبر',
-          description: 'ق.م.أ = $gcd',
+          description: 'ق.م.أ = ${NumberFormatter.format(gcd.toDouble())}',
         ),
         ExplanationStep(
           title: '✂️ التبسيط',
-          description: '${a.toInt()}÷$gcd : ${b.toInt()}÷$gcd',
+          description:
+              '${NumberFormatter.format(a.toDouble())}÷${NumberFormatter.format(gcd.toDouble())} : ${NumberFormatter.format(b.toDouble())}÷${NumberFormatter.format(gcd.toDouble())}',
           fractionData: {'num1': '$simplifiedA', 'den1': '$simplifiedB'},
         ),
         ExplanationStep(
           title: '📊 النسبة العشرية',
           description:
-              '${a.toInt()} ÷ ${b.toInt()} = ${NumberFormatter.formatWithPrecision(ratio, 2)}',
+              '${NumberFormatter.format(a)} ÷ ${NumberFormatter.format(b)} = ${NumberFormatter.formatWithPrecision(ratio, 2)}',
         ),
         ExplanationStep(
           title: '✅ النتيجة النهائية',
@@ -884,7 +892,8 @@ class MathHelper {
       steps: [
         ExplanationStep(
           title: '📝 المسألة',
-          description: 'log_$base($number) = ؟',
+          description:
+              'log_${NumberFormatter.format(base)}(${NumberFormatter.format(number)}) = ؟',
         ),
         ExplanationStep(
           title: '📐 القانون',
@@ -892,12 +901,13 @@ class MathHelper {
         ),
         ExplanationStep(
           title: '🔢 الحساب',
-          description: 'log_$base($number) = ln($number) / ln($base)',
+          description:
+              'log_${NumberFormatter.format(base)}(${NumberFormatter.format(number)}) = ln(${NumberFormatter.format(number)}) / ln(${NumberFormatter.format(base)})',
         ),
         ExplanationStep(
           title: '✅ النتيجة',
           description:
-              'log_$base($number) = ${NumberFormatter.formatWithPrecision(result, 4)}',
+              'log_${NumberFormatter.format(base)}(${NumberFormatter.format(number)}) = ${NumberFormatter.formatWithPrecision(result, 4)}',
           isHighlighted: true,
         ),
       ],
@@ -996,7 +1006,8 @@ class MathHelper {
         if (gcd > 1)
           ExplanationStep(
             title: '✂️ التبسيط',
-            description: 'نقسم البسط والمقام على $gcd',
+            description:
+                'نقسم البسط والمقام على ${NumberFormatter.format(gcd.toDouble())}',
             fractionData: {
               'num1': '$simplifiedFav',
               'den1': '$simplifiedTotal',
