@@ -202,5 +202,6 @@
   "multiplyTheNumbers": "نضرب الرقمين",
   "divideFirstBySecond": "نقسم الرقم الأول على الثاني",
   "exactDivision": "قسمة تامة",
-  "remainder": "الباقي"
+  "remainder": "الباقي",
+  "expRemainder": "📌 الباقي"
 }

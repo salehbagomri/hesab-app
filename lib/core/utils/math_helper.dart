@@ -86,7 +86,7 @@ class MathHelper {
           ExplanationStep(
             title: 'expProblem',
             description:
-                'expWeWantToCalculate ${NumberFormatter.format(aInt.toDouble())} + ${NumberFormatter.format(bInt.toDouble())}',
+                'نريد حساب: ${NumberFormatter.format(aInt.toDouble())} + ${NumberFormatter.format(bInt.toDouble())}',
           ),
           ExplanationStep(
             title: 'expArrangeNumbers',
@@ -119,7 +119,7 @@ class MathHelper {
           ExplanationStep(
             title: 'expProblem',
             description:
-                'expWeWantToCalculate ${NumberFormatter.format(a)} + ${NumberFormatter.format(b)}',
+                'نريد حساب: ${NumberFormatter.format(a)} + ${NumberFormatter.format(b)}',
           ),
           ExplanationStep(
             title: 'expCalculation',
@@ -150,7 +150,7 @@ class MathHelper {
           ExplanationStep(
             title: 'expProblem',
             description:
-                'expWeWantToCalculate ${NumberFormatter.format(aInt.toDouble())} - ${NumberFormatter.format(bInt.toDouble())}',
+                'نريد حساب: ${NumberFormatter.format(aInt.toDouble())} - ${NumberFormatter.format(bInt.toDouble())}',
           ),
           ExplanationStep(
             title: 'expArrangeNumbers',
@@ -182,7 +182,7 @@ class MathHelper {
           ExplanationStep(
             title: 'expProblem',
             description:
-                'expWeWantToCalculate ${NumberFormatter.format(a)} - ${NumberFormatter.format(b)}',
+                'نريد حساب: ${NumberFormatter.format(a)} - ${NumberFormatter.format(b)}',
           ),
           ExplanationStep(
             title: 'expCalculation',
@@ -214,7 +214,7 @@ class MathHelper {
           ExplanationStep(
             title: 'expProblem',
             description:
-                'expWeWantToCalculate ${NumberFormatter.format(aInt.toDouble())} × ${NumberFormatter.format(bInt.toDouble())}',
+                'نريد حساب: ${NumberFormatter.format(aInt.toDouble())} × ${NumberFormatter.format(bInt.toDouble())}',
           ),
           ExplanationStep(
             title: 'expMultiplicationTable',
@@ -235,7 +235,7 @@ class MathHelper {
           ExplanationStep(
             title: 'expProblem',
             description:
-                'expWeWantToCalculate ${NumberFormatter.format(a)} × ${NumberFormatter.format(b)}',
+                'نريد حساب: ${NumberFormatter.format(a)} × ${NumberFormatter.format(b)}',
           ),
           ExplanationStep(
             title: 'expMultiply',
@@ -280,7 +280,7 @@ class MathHelper {
         ExplanationStep(
           title: 'expProblem',
           description:
-              'expWeWantToCalculate ${NumberFormatter.format(a)} ÷ ${NumberFormatter.format(b)}',
+              'نريد حساب: ${NumberFormatter.format(a)} ÷ ${NumberFormatter.format(b)}',
         ),
         ExplanationStep(
           title: 'expDivision',
@@ -290,15 +290,15 @@ class MathHelper {
         ),
         if (!isExact)
           ExplanationStep(
-            title: 'expNote',
+            title: 'expRemainder',
             description:
-                'remainder = ${NumberFormatter.formatWithPrecision(remainder, 2)}',
+                'الباقي = ${NumberFormatter.formatWithPrecision(remainder, 2)}',
           ),
         ExplanationStep(
           title: 'expFinalResult',
           description: isExact
-              ? 'expTheResult ${NumberFormatter.format(result)}'
-              : 'expTheResult ${NumberFormatter.formatWithPrecision(result, 2)}',
+              ? 'الناتج: ${NumberFormatter.format(result)}'
+              : 'الناتج: ${NumberFormatter.formatWithPrecision(result, 2)}',
           isHighlighted: true,
         ),
       ],
